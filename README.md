@@ -49,12 +49,16 @@ The NFTLend Platform relies on a network of Lenders who provide the funds for bo
 ## Screenshots
 
 ### NFTLend Interface
-![NFTLend Interface](Images/1.jpg)
+![NFTLend Interface](Images/1.png)
 
 ### Requesting a Loan
-![NFTLend Interface](Images/2.jpg)
-![NFTLend Interface](Images/3.jpg)
-![NFTLend Interface](Images/4.jpg)
+![NFTLend Interface](Images/2.png)
+
+### Liquidate Loan
+![NFTLend Interface](Images/3.png)
+
+### Fetching NFT 
+![NFTLend Interface](Images/4.png)
 
 
 ## Roadmap
@@ -73,7 +77,6 @@ The NFTLend Platform relies on a network of Lenders who provide the funds for bo
 ## Ethereum Sepolia contract address
 
 0x9A76a62E9A6436D502922A1d9ce697619493DAee
-
 
 
 
