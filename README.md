@@ -53,13 +53,8 @@ The NFTLend Platform relies on a network of Lenders who provide the funds for bo
 
 ### Requesting a Loan
 ![NFTLend Interface](Images/2.jpg)
-![NFTLend Interface](Images/6.jpg)
 ![NFTLend Interface](Images/3.jpg)
-![NFTLend Interface](Images/5.jpg)
-
-### Viewing a Memento
-![NFTLend Interface](Images/8.jpg)
-![NFTLend Interface](Images/9.jpg)
+![NFTLend Interface](Images/4.jpg)
 
 
 ## Roadmap
