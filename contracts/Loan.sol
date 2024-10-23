@@ -30,14 +30,13 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         bool isRepaid;
         bool isLiquidated;
     }
-    
-    // Storage
+
     mapping(uint256 => LoanRequest) public loanRequests;
     uint256 public totalLoans;
-    mapping(address => uint256[]) public userLoans; // Borrower -> loan IDs
-    mapping(address => uint256[]) public lenderLoans; // Lender -> loan IDs
+    mapping(address => uint256[]) public userLoans;
+    mapping(address => uint256[]) public lenderLoans;
     
-    // Events
+
     event LoanRequestCreated(
         uint256 indexed loanId,
         address indexed borrower,
@@ -58,7 +57,6 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         platformFeePercent = 5;
     }
     
-    // Modifiers
     modifier onlyAdmin() {
         require(msg.sender == admin, "Not admin");
         _;
@@ -222,7 +220,6 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
             }
         }
         
-        // Create correctly sized array
         uint256[] memory result = new uint256[](activeCount);
         for (uint256 i = 0; i < activeCount; i++) {
             result[i] = activeLoans[i];
