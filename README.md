@@ -7,14 +7,14 @@
 The NFTLend is a decentralized application (dApp) designed to facilitate peer-to-peer lending using NFTs (ERC721 tokens) as collateral. Borrowers can stake their NFTs to request loans, while lenders can fund these loan requests, earning interest over time. The platform ensures secure transactions by locking the NFTs as collateral until the loan is repaid or defaulted, at which point the lender can claim the NFT. Built on Polygon, it leverages smart contracts for managing collateral, loan funding, repayment, and liquidation, providing transparency and automation in decentralized finance (DeFi).
 
 ## Problem It Solves
-- **Problem 1-** 
+**Problem 1-** 
 **NFT Liquidity Issues and Idle Capital**
 Traditionally, NFT holders face liquidity issues with their assets, while individuals with idle capital lack opportunities for substantial returns.
 
 **Solution-** 
 We introduce NFTLend, a transparent, secure, and user-friendly ecosystem that facilitates instant NFT-backed loans, effectively solving the challenge.
 
-- **Problem 2-** 
+**Problem 2-** 
 **Trust Issues and Security Concerns**
 Participants in the NFT market often grapple with trust issues. Additionally, concerns about theft or loss from server shutdowns or project discontinuations persist.
 
