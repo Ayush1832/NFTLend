@@ -2,11 +2,13 @@
 pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
+contract MicroloanPlatform is Ownable, ReentrancyGuard,ERC1155Holder {
      
     address public admin;
     uint256 public platformFeePercent;
@@ -30,13 +32,14 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         bool isRepaid;
         bool isLiquidated;
     }
-
+    
+    // Storage
     mapping(uint256 => LoanRequest) public loanRequests;
     uint256 public totalLoans;
-    mapping(address => uint256[]) public userLoans;
-    mapping(address => uint256[]) public lenderLoans;
+    mapping(address => uint256[]) public userLoans; // Borrower -> loan IDs
+    mapping(address => uint256[]) public lenderLoans; // Lender -> loan IDs
     
-
+    // Events
     event LoanRequestCreated(
         uint256 indexed loanId,
         address indexed borrower,
@@ -57,6 +60,7 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         platformFeePercent = 5;
     }
     
+    // Modifiers
     modifier onlyAdmin() {
         require(msg.sender == admin, "Not admin");
         _;
@@ -86,8 +90,19 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         require(duration > 0, "Invalid duration");
         
          
-        IERC721(collateralToken).safeTransferFrom(msg.sender, address(this), collateralId);
-        require(IERC721(collateralToken).ownerOf(collateralId)==address(this),"Transfer failed");
+        IERC1155(collateralToken).safeTransferFrom(
+    msg.sender,         
+    address(this),      
+    collateralId,       
+    1,                  
+    ""                  
+);
+
+
+      require(
+    IERC1155(collateralToken).balanceOf(address(this), collateralId) > 0, 
+    "Transfer failed"
+);
         
         uint256 loanId = totalLoans;
         
@@ -167,7 +182,12 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         platformFeesCollected += platformFee;
         
          
-        IERC721(loan.collateralToken).safeTransferFrom(address(this), loan.borrower, loan.collateralId);
+        IERC1155(loan.collateralToken).safeTransferFrom(address(this), loan.borrower, loan.collateralId,1,"");
+        require(
+    IERC1155(loan.collateralToken).balanceOf(address(this), loan.collateralId) > 0, 
+    "Transfer failed"
+);
+        
         
     
         payable(loan.lender).transfer(msg.value - platformFee);
@@ -192,11 +212,17 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         loan.isActive = false;
         
         
-        IERC721(loan.collateralToken).safeTransferFrom(address(this), loan.lender, loan.collateralId);
+        IERC1155(loan.collateralToken).safeTransferFrom(address(this), loan.lender, loan.collateralId,1,"");
+         require(
+    IERC1155(loan.collateralToken).balanceOf(address(this), loan.collateralId) > 0, 
+    "Transfer failed"
+);
+
         
         emit LoanLiquidated(loanId, loan.lender);
     }
     
+  
     function calculateRepaymentAmount(uint256 loanId) 
         public 
         view 
@@ -219,6 +245,7 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
             }
         }
         
+        // Create correctly sized array
         uint256[] memory result = new uint256[](activeCount);
         for (uint256 i = 0; i < activeCount; i++) {
             result[i] = activeLoans[i];
