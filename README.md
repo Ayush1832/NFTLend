@@ -22,7 +22,7 @@ Participants in the NFT market often grapple with trust issues. Additionally, co
 We utilize the Polygon blockchain and smart contracts, ensuring a secure lending process while eliminating the risk of theft or loss, as NFTs are securely held in the blockchain.
 
 
-## Use Cases
+## Functions
 
 NFTLend offers key functionalities for decentralized lending:
 
