@@ -3,9 +3,9 @@
 **Deployed Link-**
 https://engage-2024.vercel.app/
 
-**Make sure your NFT has the permission `setApprovalforAll` in the NFT contract which is minted in https://testnets.opensea.io/** /n
+**Make sure your NFT has the permission `setApprovalforAll` in the NFT contract which is minted in https://testnets.opensea.io/** 
 
-**NFTLend Dapp contract addrerss- 0xF04d5657A9C84406B989473Bb3E4A8B6990D3f4D** /n
+**NFTLend Dapp contract addrerss- 0xF04d5657A9C84406B989473Bb3E4A8B6990D3f4D** 
 
 **Above is the NFTLend Dapp contract address. Make sure you have the approvals ready from Polygon Amoy in NFT contract address.**
 
