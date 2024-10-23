@@ -197,7 +197,6 @@ contract MicroloanPlatform is Ownable, ERC721Holder, ReentrancyGuard {
         emit LoanLiquidated(loanId, loan.lender);
     }
     
-  
     function calculateRepaymentAmount(uint256 loanId) 
         public 
         view 
