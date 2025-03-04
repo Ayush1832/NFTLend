@@ -1,48 +1,65 @@
-
 import { useNavigate } from "react-router-dom";
-// import Lending from './Lending.jsx';
-// import Borrowing from './Borrowing.jsx';
-import borrow from "../../public/Lending.png";
-import lending from "../../public/Lending2.webp"
-import logo from "../../public/logo.jpg"
-
-
-import { Button, Flex, Tooltip } from 'antd';
+import logo from "../../public/logo.jpg";
+import { Button } from "antd";
 
 const LandingPage = () => {
-  // Move useNavigate inside the component
   const navigate = useNavigate();
 
-  // Handle click event
-  const handleLendingClick = () => {
-    navigate('/Lending'); // Navigate to the Lending page
-  };
-  const handleBorrowingClick = ()=>{
-    navigate("/Borrowing")
-  }
-
   return (
-    <>
-  <div className="p-10 bg-gradient-to-r from-violet-500 to-fuchsia-500">
-    <img src={logo} alt="" className="w-20" />
-    <div className=" w-[100vw] h-[100vh]">
-      <h1 className="text-5xl m-[90px] text-center hover:"  >Use your NFTs to get a loan</h1>
-      <div className="flex justify-center items-center  gap-8 mt-[100px]">
-     <div className="flex justify-itmes-center flex-col">
-      <div>
-      <img src={borrow} alt="tushar" className="w-[500px] cursor-pointer rounded-md"  onClick={handleBorrowingClick}/>
+    <div className="min-h-screen bg-black text-white p-10 flex flex-col items-center">
+      {/* Navbar */}
+      <div className="w-full flex justify-between items-center max-w-6xl">
+        <img src={logo} alt="NFTLend Logo" className="w-24" />
+        <button className="bg-purple-600 px-4 py-2 rounded-lg">Connect Wallet</button>
       </div>
-        <div> <h1 className="text-3xl text-center">Borrow Loan</h1></div>
+
+      {/* Hero Section */}
+      <div className="text-center mt-16">
+        <h1 className="text-6xl font-bold text-purple-400">
+          Unlock the Value of Your NFTs
+        </h1>
+        <p className="text-gray-400 mt-4 text-lg max-w-2xl mx-auto">
+          Get instant loans using your NFTs as collateral. Our secure platform
+          connects borrowers with lenders in the NFT space.
+        </p>
+        <div className="mt-6 flex justify-center gap-4">
+          <Button
+            className="bg-purple-500 text-white px-6 py-3 rounded-lg text-lg"
+            onClick={() => navigate("/Borrowing")}
+          >
+            Borrow Now →
+          </Button>
+          <Button
+            className="bg-gray-800 text-white px-6 py-3 rounded-lg text-lg"
+            onClick={() => navigate("/Lending")}
+          >
+            Start Lending
+          </Button>
+        </div>
       </div>
-      <div>
-        <img src={lending} alt="tushar"onClick={handleLendingClick} className="w-[450px] flex justify-itmes-center flex-col cursor-pointer rounded-md"/>
-        <h1 className="text-3xl text-center ">Lend Loan</h1>
+
+      {/* Features Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-5xl">
+        <div className="bg-gray-900 p-6 rounded-lg text-center">
+          <h2 className="text-xl font-bold text-white">Instant Loans</h2>
+          <p className="text-gray-400 mt-2">
+            Get quick access to loans using your NFTs as collateral.
+          </p>
         </div>
+        <div className="bg-gray-900 p-6 rounded-lg text-center">
+          <h2 className="text-xl font-bold text-white">Secure Platform</h2>
+          <p className="text-gray-400 mt-2">
+            Smart contract-based lending with maximum security.
+          </p>
         </div>
-        <h1 className="text-5xl m-[90px] text-center"> Use your NFT as collateral to borrow crypto from lenders. Repay your loan, and you get your NFT back.</h1>
+        <div className="bg-gray-900 p-6 rounded-lg text-center">
+          <h2 className="text-xl font-bold text-white">Competitive Rates</h2>
+          <p className="text-gray-400 mt-2">
+            Find the best lending rates in the NFT market.
+          </p>
         </div>
-        </div>
-    </>
+      </div>
+    </div>
   );
 };
 
