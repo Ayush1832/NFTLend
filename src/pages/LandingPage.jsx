@@ -1,24 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../public/logo.jpg";
+import background from "../../public/background.png";
 import { Button } from "antd";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-black text-white p-10 flex flex-col items-center">
+    <div
+      className="min-h-screen text-white p-10 flex flex-col items-center"
+      style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundPosition: "center" }}
+    >
       {/* Navbar */}
       <div className="w-full flex justify-between items-center max-w-6xl">
         <img src={logo} alt="NFTLend Logo" className="w-24" />
-        <button className="bg-purple-600 px-4 py-2 rounded-lg">Connect Wallet</button>
+        <button className="bg-purple-900 px-4 py-2 rounded-lg">Connect Wallet</button>
       </div>
 
       {/* Hero Section */}
       <div className="text-center mt-16">
-        <h1 className="text-6xl font-bold text-purple-400">
+        <h1 className="text-6xl font-bold text-purple-200">
           Unlock the Value of Your NFTs
         </h1>
-        <p className="text-gray-400 mt-4 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 mt-4 text-lg max-w-2xl mx-auto">
           Get instant loans using your NFTs as collateral. Our secure platform
           connects borrowers with lenders in the NFT space.
         </p>
